@@ -1,19 +1,16 @@
 package laba2;
 
+import java.io.Serializable;
 import java.util.Objects;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
-
-import java.io.Serializable;
 @JsonSerialize
+@JsonAutoDetect
+
+
 public class Pet implements Serializable,Comparable<Pet>{
-	public Pet(String name, int age, boolean vacStatus, int gender) {
-		super();
-		this.name = name;
-		this.age = age;
-		this.vacStatus = vacStatus;
-		this.gender = gender;
-	}
+	
 	private static final long serialVersionUID=1L;
 	private String name;
 	private int age;
@@ -22,6 +19,16 @@ public class Pet implements Serializable,Comparable<Pet>{
 	public int getGender() {
 		return gender;
 	}
+	public Pet(String name, int age, boolean vacStatus, int gender) {
+		super();
+		this.name = name;
+		this.age = age;
+		this.vacStatus = vacStatus;
+		this.gender = gender;
+	}
+	public Pet() {
+		super();
+	}
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
@@ -29,7 +36,7 @@ public class Pet implements Serializable,Comparable<Pet>{
 		this.name=Name;
 	}
 	public int getAge() {
-		return age;
+		return this.age;
 	}
 	public void setAge(int age) {
 		this.age = age;
@@ -41,7 +48,7 @@ public class Pet implements Serializable,Comparable<Pet>{
 		this.vacStatus = vacStatus;
 	}
 	public String getName() {
-		return name;
+		return this.name;
 	}
 	public Pet(Builder builder) {
 		this.name=builder.name;
